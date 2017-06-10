@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "Snake.hpp"
 
 #endif /* MainScene_hpp */
