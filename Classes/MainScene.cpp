@@ -16,7 +16,7 @@ Scene* MainScene::createScene()
     auto scene = Scene::createWithPhysics();
     auto world = scene->getPhysicsWorld();
     
-
+    world->setGravity(Vec2::ZERO);
     world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     
     auto layer = MainScene::create();
@@ -32,7 +32,15 @@ bool MainScene::init()
         return false;
     }
     
+    auto winSize = Director::getInstance()->getWinSize();
+    auto snake = Sprite::create("snake.png");
+    auto physicsBody = PhysicsBody::createBox(snake->getContentSize());
+    snake->setPhysicsBody(physicsBody);
+    snake->setPosition(Vec2(winSize.width / 2.0,winSize.height / 2.0));
+    this->addChild(snake);
+    
     this->scheduleUpdate();
+    
     
     return true;
 }
